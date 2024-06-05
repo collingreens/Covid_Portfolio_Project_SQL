@@ -96,10 +96,10 @@ From PopvsVac
 
 --Temp Table
 
--- Drop the table if it exists
+-- Droping the table if it exists
 DROP TABLE IF EXISTS #PercentPopulationVaccinated;
 
--- Create the temporary table
+-- Creating the temporary table
 CREATE TABLE #PercentPopulationVaccinated
 (
     Continent nvarchar(255),
@@ -110,7 +110,7 @@ CREATE TABLE #PercentPopulationVaccinated
     RollingPeopleVaccinated numeric
 );
 
--- Insert data into the temporary table
+-- Inserting data into the temporary table
 INSERT INTO #PercentPopulationVaccinated
 SELECT 
     dea.continent, 
@@ -127,7 +127,7 @@ JOIN
     AND dea.date = vac.date
 --WHERE dea.continent IS NOT NULL
 
--- Select the data and calculate the percentage of the population vaccinated
+-- Selecting the data and calculate the percentage of the population vaccinated
 SELECT  *, (RollingPeopleVaccinated / Population) * 100
 FROM #PercentPopulationVaccinated;
 
